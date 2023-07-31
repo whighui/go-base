@@ -43,19 +43,13 @@
 //
 // 进阶：你可以想出一个时间复杂度小于 O(n²) 的算法吗？
 //
-// Related Topics 数组 哈希表 👍 17267 👎 0
+// Related Topics 数组 哈希表 👍 17398 👎 0
 
 package lc
 
 // leetcode submit region begin(Prohibit modification and deletion)
 func twoSum(nums []int, target int) []int {
-	m := make(map[int]int) //这里边就是数字有范围呢
-	for index, value := range nums {
-		if _, ok := m[target-value]; ok {
-			return []int{m[target-value], index}
-		}
-		m[value] = index
-	}
+
 	return nil
 }
 
