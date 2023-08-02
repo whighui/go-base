@@ -1,0 +1,31 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        //在这里进行反转链表被  我们需要如何做呢 就是迭代来做被
+
+        if(head==null || head.next==null) return head;
+
+        ListNode res=null , temp=head;
+
+        while(temp!=null){
+            
+            temp=head.next;
+            head.next=res;
+            res=head;
+            head=temp;
+        }
+
+        return res;
+    }
+}
+//runtime:0 ms
+//memory:37.9 MB

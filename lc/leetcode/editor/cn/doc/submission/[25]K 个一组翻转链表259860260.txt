@@ -1,0 +1,48 @@
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode               //这里边就是Next为什么需要大写呢 
+ * }
+ */
+
+ // K个一组反转链表 这里边就是还是K个呗 返回是一个指针的形式呗  
+func reverseKGroup(head *ListNode, k int) *ListNode {
+	if head == nil {
+		return nil
+	}
+	res := &ListNode{Val: -1}
+	virtual := res
+	count := count(head)
+	tail := head
+	for count/k > 0 {
+		num := k
+		var cur *ListNode=nil
+		for head != nil && num > 0 {
+			temp := head.Next
+			head.Next = cur
+			cur = head
+			head = temp
+			num--
+		}
+		virtual.Next = cur
+		tail.Next = head
+		virtual = tail
+		tail = head
+		count = count - k
+	}
+
+	return res.Next
+}
+
+func count(head *ListNode) int {
+	count := 0
+	for head != nil {
+		count++
+		head = head.Next
+	}
+	return count
+}
+
+//runtime:0 ms
+//memory:3.6 MB

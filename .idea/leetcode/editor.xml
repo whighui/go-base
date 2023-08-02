@@ -3,6 +3,28 @@
   <component name="LeetcodeEditor">
     <option name="projectConfig">
       <map>
+        <entry key="$PROJECT_DIR$/../../golang/base/golang/lc /leetcode/editor/cn/[21]合并两个有序链表.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/lc/leetcode/editor/cn/doc/content/[21]合并两个有序链表.md" />
+              <option name="frontendQuestionId" value="leetcode.cn21" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[21]合并两个有序链表.go" />
+              <option name="titleSlug" value="merge-two-sorted-lists" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../golang/base/golang/lc /leetcode/editor/cn/[50]Pow(x, n).go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../golang/base/golang/lc /leetcode/editor/cn/doc/content/[50]Pow(x, n).md" />
+              <option name="frontendQuestionId" value="leetcode.cn50" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/../../golang/base/golang/lc /leetcode/editor/cn/[50]Pow(x, n).go" />
+              <option name="titleSlug" value="powx-n" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/lc/leetcode/editor/cn/[1]两数之和.go">
           <value>
             <LeetcodeEditor>
@@ -11,6 +33,50 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[1]两数之和.go" />
               <option name="titleSlug" value="two-sum" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/lc/leetcode/editor/cn/[206]反转链表.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/lc/leetcode/editor/cn/doc/content/[206]反转链表.md" />
+              <option name="frontendQuestionId" value="leetcode.cn206" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[206]反转链表.go" />
+              <option name="titleSlug" value="reverse-linked-list" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/lc/leetcode/editor/cn/[21]合并两个有序链表.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/lc/leetcode/editor/cn/doc/content/[21]合并两个有序链表.md" />
+              <option name="frontendQuestionId" value="leetcode.cn21" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[21]合并两个有序链表.go" />
+              <option name="titleSlug" value="merge-two-sorted-lists" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/lc/leetcode/editor/cn/[25]K 个一组翻转链表.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/lc/leetcode/editor/cn/doc/content/[25]K 个一组翻转链表.md" />
+              <option name="frontendQuestionId" value="leetcode.cn25" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[25]K 个一组翻转链表.go" />
+              <option name="titleSlug" value="reverse-nodes-in-k-group" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/lc/leetcode/editor/cn/[92]反转链表 II.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/lc/leetcode/editor/cn/doc/content/[92]反转链表 II.md" />
+              <option name="frontendQuestionId" value="leetcode.cn92" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[92]反转链表 II.go" />
+              <option name="titleSlug" value="reverse-linked-list-ii" />
             </LeetcodeEditor>
           </value>
         </entry>

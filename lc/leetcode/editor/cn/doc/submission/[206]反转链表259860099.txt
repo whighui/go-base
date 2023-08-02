@@ -1,0 +1,19 @@
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func reverseList(head *ListNode) *ListNode {
+    var cur *ListNode=nil
+    for head!=nil {
+        temp:=head.Next
+        head.Next=cur
+        cur=head
+        head=temp
+    }
+    return cur
+}
+//runtime:4 ms
+//memory:2.5 MB
