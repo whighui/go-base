@@ -43,9 +43,34 @@ type ListNode struct {
 	Next *ListNode
 }
 
+//lc-21  合并两个有序链表
 func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
-
-	return nil
+	result := &ListNode{}
+	res := result
+	for list1 != nil && list2 != nil {
+		var val1, val2 int
+		if list1 != nil {
+			val1 = list1.Val
+		}
+		if list2 != nil {
+			val2 = list2.Val
+		}
+		if val1 < val2 {
+			result.Next = &ListNode{val1, nil}
+			list1 = list1.Next
+		} else {
+			result.Next = &ListNode{val2, nil}
+			list2 = list2.Next
+		}
+		result = result.Next
+	}
+	if list1 != nil {
+		result.Next = list1
+	}
+	if list2 != nil {
+		result.Next = list2
+	}
+	return res.Next
 }
 
 //leetcode submit region end(Prohibit modification and deletion)

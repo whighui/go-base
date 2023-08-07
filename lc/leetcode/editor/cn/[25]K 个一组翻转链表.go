@@ -50,24 +50,26 @@ package doc
  *     Next *ListNode
  * }
  */
-//K个一组反转链表 末尾不足K个不进行反转
+//K个一组反转链表呢
 func reverseKGroup(head *ListNode, k int) *ListNode {
-	result := &ListNode{}
-	res := result
-	reverseCnt, group := 0, k //表示反转频次
+	if head == nil || k <= 1 {
+		return head
+	}
 	tempHead := head
-	for head != nil && group > 0 {
+	reverseCnt, group := 0, k
+	for tempHead != nil && group > 0 {
+		tempHead = tempHead.Next
 		group--
-		head = head.Next
 		if group == 0 {
-			group = k
 			reverseCnt++
+			group = k
 		}
 	}
-
-	head = tempHead  //反转之前头结点
-	tail := tempHead //反转之后尾节点
+	//开始进行反转 反转之前要记住头尾节点呢
+	result, tail := &ListNode{}, &ListNode{}
+	res := result
 	for i := 0; i < reverseCnt; i++ {
+		tail = head
 		group = k
 		var cur *ListNode
 		for head != nil && group > 0 {
@@ -77,14 +79,12 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 			head = next
 			group--
 		}
-		res.Next = cur
-		tail.Next = head //连接中间尾节点
-		res = tail       //连接中间上一节点
-		tail = head
+		result.Next = cur
+		//连接
+		result = tail //重置result 找到反转之前头结点
 	}
-	res.Next = head
-	//反转之前找到头尾节点
-	return result.Next
+	tail.Next = head //最后链接没有进行反转的
+	return res.Next
 }
 
 //leetcode submit region end(Prohibit modification and deletion)

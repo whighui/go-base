@@ -3,6 +3,17 @@
   <component name="LeetcodeEditor">
     <option name="projectConfig">
       <map>
+        <entry key="$PROJECT_DIR$/../../base/golang/lc/leetcode/editor/cn/[23]合并 K 个升序链表.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../base/golang/lc/leetcode/editor/cn/doc/content/[23]合并 K 个升序链表.md" />
+              <option name="frontendQuestionId" value="leetcode.cn23" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/../../base/golang/lc/leetcode/editor/cn/[23]合并 K 个升序链表.go" />
+              <option name="titleSlug" value="merge-k-sorted-lists" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../golang/base/golang/lc /leetcode/editor/cn/[21]合并两个有序链表.go">
           <value>
             <LeetcodeEditor>
@@ -22,6 +33,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/../../golang/base/golang/lc /leetcode/editor/cn/[50]Pow(x, n).go" />
               <option name="titleSlug" value="powx-n" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/lc/leetcode/editor/cn/[143]重排链表.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/lc/leetcode/editor/cn/doc/content/[143]重排链表.md" />
+              <option name="frontendQuestionId" value="leetcode.cn143" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[143]重排链表.go" />
+              <option name="titleSlug" value="reorder-list" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -66,6 +88,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[25]K 个一组翻转链表.go" />
               <option name="titleSlug" value="reverse-nodes-in-k-group" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/lc/leetcode/editor/cn/[876]链表的中间结点.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/lc/leetcode/editor/cn/doc/content/[876]链表的中间结点.md" />
+              <option name="frontendQuestionId" value="leetcode.cn876" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[876]链表的中间结点.go" />
+              <option name="titleSlug" value="middle-of-the-linked-list" />
             </LeetcodeEditor>
           </value>
         </entry>
