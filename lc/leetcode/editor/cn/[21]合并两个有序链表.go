@@ -44,6 +44,7 @@ type ListNode struct {
 }
 
 func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
+	//那个电脑就是手感还是不好呢 手感好就是要了呢
 
 	return nil
 }
