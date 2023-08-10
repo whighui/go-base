@@ -1,0 +1,33 @@
+
+//首先解决的是上来就是滑动窗口呗 滑动窗口来解决本题呗
+func lengthOfLongestSubstring(s string) int {
+	if len(s) <= 1 {
+		return len(s)
+	}
+
+	left, right, m := 0, 0, make(map[byte]int)
+	res := 0
+	for right < len(s) {
+		m[s[right]]++
+		for m[s[right]] > 1 {
+			m[s[left]]--
+			left++
+		}
+		right++
+		res = max(res, right-left)
+	}
+
+	return res
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+
+	return b
+}
+
+
+//runtime:8 ms
+//memory:2.8 MB
