@@ -1,51 +1,38 @@
 package main
 
+import "fmt"
+
 type ListNode struct {
 	Val  int
 	Next *ListNode
 }
 
 func main() {
-	head5 := &ListNode{5, nil}
-	head4 := &ListNode{4, head5}
-	head3 := &ListNode{3, head4}
-	head2 := &ListNode{2, head3}
-	head := &ListNode{1, head2}
-	reverseKGroup(head, 2)
+	s := "abac"
+	fmt.Println(longestPalindrome(s))
 }
 
-// K个一组反转链表 末尾不足K个不进行反转
-func reverseKGroup(head *ListNode, k int) *ListNode {
-	result := &ListNode{}
-	result.Next = head
-	res := result
-	reverseCnt, group := 0, k //表示反转频次
-	for head != nil && group > 0 {
-		group--
-		head = head.Next
-		if group == 0 {
-			group = k
-			reverseCnt++
-		}
-	}
+//最长回文子串呗 这种使用中心扩散法呗是最好的呗
+func longestPalindrome(s string) string {
 
-	head = res.Next  //反转之前头结点
-	tail := res.Next //反转之后尾节点
-	for i := 0; i < reverseCnt; i++ {
-		group = k
-		var cur *ListNode
-		for head != nil && group > 0 {
-			next := head.Next
-			head.Next = cur
-			cur = head
-			head = next
-			group--
-		}
-		res.Next = cur
-		res = tail
-		tail = res.Next
+	res := ""
+	for i := 0; i < len(s); i++ {
+		res = maxPalindrome(i, i, s, res)
+		res = maxPalindrome(i, i+1, s, res)
 	}
-	res.Next = head
-	//反转之前找到头尾节点
-	return result.Next
+	return res
+}
+
+//判断局部是否成对呗  在这里直接返回字符创就是最好的办法呗
+func maxPalindrome(i, j int, s, res string) string {
+	sub := ""
+	for i >= 0 && j < len(s) && s[i] == s[j] {
+		sub = s[i : j+1]
+		i--
+		j++
+	}
+	if len(sub) > len(res) {
+		res = sub
+	}
+	return res
 }

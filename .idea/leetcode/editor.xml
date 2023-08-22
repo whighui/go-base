@@ -146,6 +146,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/lc/leetcode/editor/cn/[149]直线上最多的点数.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/lc/leetcode/editor/cn/doc/content/[149]直线上最多的点数.md" />
+              <option name="frontendQuestionId" value="leetcode.cn149" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[149]直线上最多的点数.go" />
+              <option name="titleSlug" value="max-points-on-a-line" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/lc/leetcode/editor/cn/[1]两数之和.go">
           <value>
             <LeetcodeEditor>

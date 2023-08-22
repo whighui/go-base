@@ -27,25 +27,29 @@
 // Related Topics 哈希表 字符串 滑动窗口 👍 9453 👎 0
 package doc
 
+//无重复最长自创
 // leetcode submit region begin(Prohibit modification and deletion)
 func lengthOfLongestSubstring(s string) int {
-
-	//利用滑动窗口来实现 无重复字符的最长子串呢
-	if len(s) <= 1 {
-		return len(s)
-	}
-	left, right := 0, 0
-	m := make(map[uint8]int) //这里边就是使用空结构体就是可以了呢
-	for left <= right && right < len(s)-1 {
-		c := s[right]
-		m[c]++
-		for m[c] > 1 {
+	left, right, res := 0, 0, 0
+	m := make(map[uint8]int) //因为字符集是ASCII 表示范围是0-225之间 所以这么表示就是合理的呢
+	for left <= right && right < len(s) {
+		m[s[right]]++
+		right++
+		for m[s[right]] > 1 {
 			m[s[left]]--
 			left++
 		}
-		right++
+		res = max(res, right-left)
 	}
-	return right - left
+	return res
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+
+	return b
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
