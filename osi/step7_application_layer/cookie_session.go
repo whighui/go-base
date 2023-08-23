@@ -1,0 +1,3 @@
+package step7_application_layer
+
+//Cookie和Session都是在应用层上实现的机制，用于在Web应用程序中管理会话和状态信息
