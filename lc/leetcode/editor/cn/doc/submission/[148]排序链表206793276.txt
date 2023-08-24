@@ -1,0 +1,55 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    /**
+       归并排序版本 
+     */
+    public ListNode sortList(ListNode head) {
+        return head == null ? null : mergeSort(head);
+    }
+
+    private ListNode mergeSort(ListNode head) {
+        if (head.next == null) return head;     //就是剩下一个元素了呗
+
+        ListNode pre = null, slow = head, fast = head;
+        while (fast != null && fast.next != null) {  //寻找中间节点的后一个节点呗 在这里哈呢
+            pre = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        pre.next = null;                     //1-->2-->3-->4-->5   1-->2  3-->4-->5 我们要断开链表 之后进行递归呗
+        ListNode l1 = mergeSort(head);      //这里边递归操作 我需要让链表断开呗 否则这里边就是一致递归下去了啊
+        ListNode l2 = mergeSort(slow);
+        return merge(l1, l2);
+    }
+
+    //这里边就是相当于合并两个有序链表呗 
+    private ListNode merge(ListNode l1, ListNode l2) {
+        ListNode res = new ListNode(0), virtual = res;
+        while (l1 != null && l2 != null) {
+            if (l1.val <= l2.val) {
+                res.next = l1;
+                l1 = l1.next;
+                res = res.next;
+            } else {
+                res.next = l2;
+                l2 = l2.next;
+                res = res.next;
+            }
+        }
+        if (l1 == null) res.next = l2;
+        if (l2 == null) res.next = l1;
+        return virtual.next;
+    }
+}
+//runtime:5 ms
+//memory:46.8 MB

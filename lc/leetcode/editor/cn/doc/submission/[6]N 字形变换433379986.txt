@@ -1,0 +1,40 @@
+
+func convert(s string, numRows int) string {
+
+	//返回输出string呗
+	if len(s) <= 1 || numRows == 1 {
+		return s
+	}
+	matrix := make([][]byte, numRows)
+
+	for i := 0; i < numRows; i++ {
+		matrix[i] = make([]byte, 0)
+	}
+
+	res := make([]byte, 0)
+	down, up, i := 0, -numRows+2, 0
+	for i < len(s) {
+		if down < numRows {
+			matrix[down] = append(matrix[down], s[i])
+			down++
+			i++
+		} else if up < 0 {
+			matrix[-up] = append(matrix[-up], s[i])
+			up++
+			i++
+		} else {
+			down = 0
+			up = -numRows + 2
+		}
+	}
+
+	for _, row := range matrix {
+		res=append(res,row...)
+	}
+	//避免发生内存拷贝 效率更高一些
+	return *(*string)(unsafe.Pointer(&res))
+}
+
+
+//runtime:4 ms
+//memory:6.1 MB

@@ -80,6 +80,39 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/lc/leetcode/editor/cn/[144]二叉树的前序遍历.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/lc/leetcode/editor/cn/doc/content/[144]二叉树的前序遍历.md" />
+              <option name="frontendQuestionId" value="leetcode.cn144" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[144]二叉树的前序遍历.go" />
+              <option name="titleSlug" value="binary-tree-preorder-traversal" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/lc/leetcode/editor/cn/[148]排序链表.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/lc/leetcode/editor/cn/doc/content/[148]排序链表.md" />
+              <option name="frontendQuestionId" value="leetcode.cn148" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[148]排序链表.go" />
+              <option name="titleSlug" value="sort-list" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/lc/leetcode/editor/cn/[149]直线上最多的点数.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/lc/leetcode/editor/cn/doc/content/[149]直线上最多的点数.md" />
+              <option name="frontendQuestionId" value="leetcode.cn149" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[149]直线上最多的点数.go" />
+              <option name="titleSlug" value="max-points-on-a-line" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/lc/leetcode/editor/cn/[14]最长公共前缀.go">
           <value>
             <LeetcodeEditor>
@@ -143,17 +176,6 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[19]删除链表的倒数第 N 个结点.go" />
               <option name="titleSlug" value="remove-nth-node-from-end-of-list" />
-            </LeetcodeEditor>
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/lc/leetcode/editor/cn/[149]直线上最多的点数.go">
-          <value>
-            <LeetcodeEditor>
-              <option name="contentPath" value="$PROJECT_DIR$/lc/leetcode/editor/cn/doc/content/[149]直线上最多的点数.md" />
-              <option name="frontendQuestionId" value="leetcode.cn149" />
-              <option name="host" value="leetcode.cn" />
-              <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[149]直线上最多的点数.go" />
-              <option name="titleSlug" value="max-points-on-a-line" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -1144,6 +1166,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[9]回文数.go" />
               <option name="titleSlug" value="palindrome-number" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/lc/leetcode/editor/cn/[LCR 085]括号生成.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/lc/leetcode/editor/cn/doc/content/[LCR 085]括号生成.md" />
+              <option name="frontendQuestionId" value="leetcode.cnLCR 085" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[LCR 085]括号生成.go" />
+              <option name="titleSlug" value="IDBivT" />
             </LeetcodeEditor>
           </value>
         </entry>

@@ -27,29 +27,28 @@
 // Related Topics 哈希表 字符串 滑动窗口 👍 9453 👎 0
 package doc
 
-//无重复最长自创
 // leetcode submit region begin(Prohibit modification and deletion)
 func lengthOfLongestSubstring(s string) int {
-	left, right, res := 0, 0, 0
-	m := make(map[uint8]int) //因为字符集是ASCII 表示范围是0-225之间 所以这么表示就是合理的呢
+	//这里边就是简单滑动窗口来实现呗
+	left, right, m := 0, 0, make(map[byte]int)
+	res := 0
 	for left <= right && right < len(s) {
 		m[s[right]]++
-		right++
 		for m[s[right]] > 1 {
 			m[s[left]]--
 			left++
 		}
+		right++
 		res = max(res, right-left)
 	}
-	return res
+	return res 
 }
 
-func max(a, b int) int {
-	if a > b {
-		return a
+func max(i, j int) int {
+	if i > j {
+		return i
 	}
-
-	return b
+	return j
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
