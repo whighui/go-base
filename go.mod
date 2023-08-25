@@ -8,6 +8,7 @@ require (
 	code.byted.org/gopkg/logs v1.2.21
 	code.byted.org/toutiao/api_risk_detected_dal v0.0.0-20221227092610-3c74655491f3
 	github.com/go-sql-driver/mysql v1.7.1
+	github.com/gomodule/redigo v2.0.0+incompatible
 	gorm.io/driver/mysql v1.3.4
 	gorm.io/gorm v1.23.6
 )
