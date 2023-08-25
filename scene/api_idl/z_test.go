@@ -1,8 +1,6 @@
 package idl
 
 import (
-	"code.byted.org/toutiao/api_risk_detected_dal/model/sql"
-	"code.byted.org/toutiao/api_risk_detected_dal/mysql"
 	"context"
 	"fmt"
 	"testing"
@@ -25,14 +23,6 @@ func TestJsonConvertIdl(t *testing.T) {
 	respBody1 := "{\n  \"code\": 0,\n  \"data\": [\n    {\n      \"a\": \"\",\n      \"b\": \"\"\n    }\n  ],\n  \"list\": [\n    [\n      {\n        \"a\": \"\",\n        \"b\": \"\"\n      }\n    ]\n  ],\n  \"ext\": {},\n  \"message\": \"success\"\n}"
 	tree1 := JsonConvIdl(context.Background(), query1, reqBody1, respBody1)
 	fmt.Println(DiffIdlAnalyse(tree, tree1))
-}
-
-func TestUpdateIdl(t *testing.T) {
-	mysql.Init()
-	sql.Init()
-	apiIdl := sql.WriteDB.BytetreeAPIIdl
-	str := "abc"
-	apiIdl.WithContext(context.Background()).Where(apiIdl.PathID.Eq(10)).Update(apiIdl.Idl, str)
 }
 
 func TestSliceZero(t *testing.T) {

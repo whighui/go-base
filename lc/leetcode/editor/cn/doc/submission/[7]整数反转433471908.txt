@@ -1,0 +1,21 @@
+//数字转string 反转结果判断呗 大致就是这个思路呢
+func reverse(x int) int {
+	int32Max := 1<<31 - 1
+	int32Min := -1 << 31
+
+	res := 0
+	for x != 0 {
+		res = res*10 + x%10
+		x = x / 10
+	}
+
+	if res > int32Max || res < int32Min {
+		return 0
+	}
+
+	return res
+}
+
+
+//runtime:0 ms
+//memory:2 MB

@@ -1,0 +1,50 @@
+//数字转string 反转结果判断呗 大致就是这个思路呢
+func reverse(x int) int {
+	str := strconv.Itoa(x)
+
+	negative := false
+	if str[0] == '-' { //这里边本应该是字符 而不是字符串 应该使用==''
+		str = "-" + reverseString(str[1:len(str)])
+		negative = true
+	} else {
+		str = reverseString(str[0:len(str)])
+	}
+	var res int64
+	for _, val := range str {
+		ch := val - '0'
+		res = 10*res + int64(ch)
+	}
+	if negative {
+		res = -res
+	}
+
+	if res > math.MaxInt32 {
+		return math.MaxInt32
+	}
+
+	if res < math.MinInt32 {
+		return math.MinInt32
+	}
+
+	return int(res)
+}
+
+func reverseString(str string) string {
+	res := make([]byte, len(str))
+	left, right := 0, len(str)-1
+	for left <= right {
+		res[right] = str[left]
+		res[left] = str[right]
+		left++
+		right--
+	}
+	return *(*string)(unsafe.Pointer(&res))
+}
+
+
+//total_testcases:1045
+//total_correct:500
+//input_formatted:-123
+//expected_output:-321
+//code_output:2679
+//last_testcase:-123

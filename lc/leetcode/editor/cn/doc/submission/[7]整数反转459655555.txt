@@ -1,0 +1,23 @@
+func reverse(x int) int {
+	var res int64
+	for x > 0 {
+		tail := x % 10
+		res = res*10 + int64(tail)
+		x = x / 10
+	}
+	if res > math.MaxInt32 {
+		return 0
+	}
+	if res < math.MinInt32 {
+		return 0
+	}
+	return int(res)
+}
+
+
+//total_testcases:1045
+//total_correct:509
+//input_formatted:-123
+//expected_output:-321
+//code_output:0
+//last_testcase:-123
