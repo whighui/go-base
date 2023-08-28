@@ -7,7 +7,7 @@ type ListNode struct {
 
 //-----------------------------------------------------------------------------------------------------------链表专题
 
-//K个一组反转链表呢
+// K个一组反转链表呢
 func reverseKGroup(head *ListNode, k int) *ListNode {
 	if head == nil || k <= 1 {
 		return head
@@ -44,7 +44,7 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 	return res.Next
 }
 
-//lc-21  合并两个有序链表
+// lc-21  合并两个有序链表
 func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 	result := &ListNode{}
 	res := result
@@ -74,9 +74,9 @@ func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 	return res.Next
 }
 
-//lc-143 重排链表
-//L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
-//思路找到中间节点 反转后边 进行连接
+// lc-143 重排链表
+// L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
+// 思路找到中间节点 反转后边 进行连接
 func reorderList(head *ListNode) {
 	if head == nil || head.Next == nil {
 		return
@@ -94,7 +94,7 @@ func reorderList(head *ListNode) {
 	}
 }
 
-//寻找中间节点 偶数找前边 奇数找中间
+// 寻找中间节点 偶数找前边 奇数找中间
 func findMiddleNode(head *ListNode) *ListNode {
 	slow, fast := head, head
 
@@ -116,7 +116,7 @@ func reverseListNode(head *ListNode) *ListNode {
 	return cur
 }
 
-//找到链表中间节点 如果是偶数找到后边一个节点
+// 找到链表中间节点 如果是偶数找到后边一个节点
 func middleNode(head *ListNode) *ListNode {
 	slow, fast := head, head
 
@@ -126,4 +126,10 @@ func middleNode(head *ListNode) *ListNode {
 	}
 
 	return slow
+}
+
+// lc-148 排序链表  题目要求时间复杂度为O(nlogn) 那么就是只有堆排序、快速排序、归并排序
+// 由于快速排序并不是稳定排序 归并排序属于稳定排序 所以在这里就是使用归并排序来做呢
+func sortList(head *ListNode) *ListNode {
+
 }
