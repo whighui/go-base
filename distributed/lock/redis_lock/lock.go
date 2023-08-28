@@ -13,7 +13,7 @@ import (
 /**
 第一版分布式锁主要实现方式： 分布式锁是对多进程下对临界共享资源访问的一种保护措施
 
-实现分布式锁主要有 redis、mysql、etcd、zookper 前两种类似于cas+自旋方式来实现  后两种带有回调通知机制
+实现分布式锁主要有 redis_scene、mysql、etcd、zookper 前两种类似于cas+自旋方式来实现  后两种带有回调通知机制
 
 1.利用redis set key value ex 过期时间 NX  (ex表示秒过期时间、px表示毫秒过期时间)
 

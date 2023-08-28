@@ -53,6 +53,7 @@ package doc
  */
 func sortList(head *ListNode) *ListNode {
 
+	return nil
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
