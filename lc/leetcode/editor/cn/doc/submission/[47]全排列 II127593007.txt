@@ -1,0 +1,42 @@
+class Solution {
+     
+     //可能就是存在相同的数字 按任意顺序返回不相同的排列顺序呗 就是哈  关键点就是在那里剪支呗 就是哈 关键点就是在哪里剪支呗 这个就是想清楚呗就是哈
+    private List<List<Integer>> res = new LinkedList<>();
+
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        if (nums == null) return null;
+        boolean[] visited = new boolean[nums.length];
+        LinkedList<Integer> track = new LinkedList<>();
+        //1.思路一：对数组进行排序之后再进行全排列呗  为剪支做好准备
+        Arrays.sort(nums);
+        backtrack(nums, track, visited);
+        return res;
+    }
+
+    //回溯就是 循环   +添加+递归+移除
+    public void backtrack(int[] nums, LinkedList<Integer> track, boolean[] visited) {
+        //递归推出条件
+        if (nums.length == track.size()) {
+            res.add(new LinkedList<>(track));
+            return;
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            if (visited[i]) {
+                continue;
+            }
+            // 剪枝条件：i > 0 是为了保证 nums[i - 1] 有意义
+            // 写 !visited[i - 1] 是因为 nums[i - 1] 在深度优先遍历的过程中刚刚被撤销选择
+            if (i > 0 && nums[i] == nums[i - 1] && !visited[i - 1]) {
+                continue;
+            }
+            visited[i] = true;
+            track.add(nums[i]);
+            backtrack(nums, track, visited);
+            visited[i] = false;
+            track.removeLast();
+        }
+    }
+}
+//runtime:2 ms
+//memory:39.2 MB

@@ -1,0 +1,33 @@
+class Solution {
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+
+        LinkedList<Integer> list = new LinkedList<>();
+        Arrays.sort(nums);
+        boolean[] visited = new boolean[nums.length];
+
+        dfs(nums, visited, list, res);
+        return res;
+    }
+
+    private void dfs(int[] nums, boolean[] visited, LinkedList<Integer> list, List<List<Integer>> res) {
+
+        if (list.size() == nums.length) {
+            res.add(new LinkedList<>(list));
+            return;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (visited[i])
+                continue;           //依次进行选择 不能选择重复的在这里
+            if (i > 0 && nums[i] == nums[i - 1] && visited[i - 1]==false)      //这个就是第二次 进行添加了
+                continue;
+            list.addLast(nums[i]);
+            visited[i] = true;
+            dfs(nums, visited, list, res);
+            list.removeLast();
+            visited[i] = false;
+        }
+    }
+}
+//runtime:1 ms
+//memory:39.2 MB
