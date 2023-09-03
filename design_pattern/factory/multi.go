@@ -15,7 +15,6 @@ func (mc *MultiCollectMeta) GetMetaInfo(psm, psmType string) (bool, error, inter
 		fmt.Println(isSuccess)
 		fmt.Println(metaInfo)
 	}
-
 	//这里边应该实现三种方式呗
 	return false, nil, nil
 }
