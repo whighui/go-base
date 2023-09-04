@@ -97,3 +97,28 @@ websocket tcp
 令牌桶： psm流量信息  分布式令牌桶 在redis里边做  底层是通过incr命令来实现的
 
 */
+
+/**
+  9-3号  拼多多一面
+1.项目流程   面试官大概意思就是抽取流量做ETL
+2.乐观锁和悲观锁区别
+3.mysql select 之后 update 怎么分别乐观锁和悲观锁进行实现
+        乐观锁：数据库加一个version版本号 普通select之后 业务操作  update table set info where id='' and version=''
+		悲观锁：select ..for update 进行上锁方式
+  如果数据库中不存在这条记录使用悲观锁方式是否可以进行上锁 我答：如果有记录会进行上锁 没有记录不会进行上锁
+
+4.聚族索引 和 非聚族索引区别
+
+5.redis数据结构 string、hash、set、zset、list 以及 stream 以及地理位置
+	           面试官没动静了 沉默了5秒钟 sds底层原理说起动态字符串根据不同长度来针对不同数据类型  length:5位、1字节、2字节、4字节、8字节
+																				          并将packet内存紧凑 禁止发生内存对齐 这是redis的设计
+
+6.kafka如何保证消息投递的可靠性
+  ack应答机制 broker节点发送到副本上并成功 ack=1 表示投递成功了
+  并且可以使用retry机制 来保证投递成功
+7.kafka broken主节点宕机了，怎么办
+	zookper会进行leader选取，重副节点中找到一个合适的节点当为leader
+
+算法：二叉树的路径和（不是到叶子节点 是所有节点都适配）
+
+*/
