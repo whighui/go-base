@@ -7,6 +7,13 @@ import (
 	"time"
 )
 
+/**
+TCP 半连接队列
+
+
+TCP 全连接队列
+*/
+
 // simulate tcp three-way handshake  模拟tcp三次握手
 
 func tcpServer(ctx context.Context) {

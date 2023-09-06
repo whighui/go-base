@@ -949,6 +949,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/lc/leetcode/editor/cn/[797]所有可能的路径.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/lc/leetcode/editor/cn/doc/content/[797]所有可能的路径.md" />
+              <option name="frontendQuestionId" value="leetcode.cn797" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[797]所有可能的路径.go" />
+              <option name="titleSlug" value="all-paths-from-source-to-target" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/lc/leetcode/editor/cn/[79]单词搜索.go">
           <value>
             <LeetcodeEditor>
