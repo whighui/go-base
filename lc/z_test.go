@@ -14,3 +14,7 @@ func TestMinLength(t *testing.T) {
 	nums = append(nums, 1, 2, 3, 4, 5, 5, 5, 1)
 	fmt.Println(minLength(nums))
 }
+
+func TestRemoveKdigits(t *testing.T) {
+	fmt.Println(removeKdigits("12532", 2))
+}
