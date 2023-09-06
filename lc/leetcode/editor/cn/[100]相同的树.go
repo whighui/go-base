@@ -55,6 +55,7 @@ type TreeNode struct {
  */
 func isSameTree(p *TreeNode, q *TreeNode) bool {
 
+	return false
 }
 
 //leetcode submit region end(Prohibit modification and deletion)

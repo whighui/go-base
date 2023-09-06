@@ -93,22 +93,32 @@ func isSameTree(p *TreeNode, q *TreeNode) bool {
 	return false
 }
 
-//  List<Integer> res = new ArrayList<Integer>();
-//        if (root == null) {
-//            return res;
-//        }
-//
-//        Deque<TreeNode> stack = new LinkedList<TreeNode>();
-//        TreeNode node = root;
-//        while (!stack.isEmpty() || node != null) {
-//            while (node != null) {
-//                res.add(node.val);
-//                stack.push(node);
-//                node = node.left;
-//            }
-//            node = stack.pop();
-//            node = node.right;
-//        }
-//        return res;
-//    }
-//
+// lc-113  路径总和II
+func pathSum(root *TreeNode, targetSum int) [][]int {
+	if root == nil {
+		return nil
+	}
+	result := make([][]int, 0)
+	var dfs func(node *TreeNode, list []int, sum int)
+
+	dfs = func(node *TreeNode, list []int, sum int) {
+		if node == nil {
+			return
+		}
+		sum = sum + node.Val
+		list = append(list, node.Val)
+		if node.Left == nil && node.Right == nil && sum == 0 {
+			temp := make([]int, len(list))
+			copy(temp, list)
+			result = append(result, temp)
+			return
+		}
+		dfs(root.Left, list, sum)
+		dfs(root.Right, list, sum)
+		list = list[0 : len(list)-1]
+		sum = sum - node.Val
+	}
+	list := make([]int, 0)
+	dfs(root, list, targetSum)
+	return result
+}

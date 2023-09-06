@@ -1,0 +1,50 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    private int res=0;
+    public int pathSum(TreeNode root, int sum) {
+        //前序遍历 +  递归判断
+        if(root==null) return 0;
+        dfs(root,sum);
+        pathSum(root.left,sum);
+        pathSum(root.right,sum);
+        return res;
+    }
+
+    private void dfs(TreeNode root,int sum){
+        if(root==null) return;
+        if(sum-root.val==0){
+            res++;          //这里就是不要退出return 因为后续相加可能为0呗 在这里哈呢
+        }
+        dfs(root.left,sum-root.val);
+        dfs(root.right,sum-root.val);
+    }
+
+    //浓缩版得递归
+    // public int pathSum(TreeNode root, int sum) {
+    //     if (root == null) return 0;
+    //     return findPath(root, sum) + pathSum(root.left, sum) + pathSum(root.right, sum);
+    // }
+
+    // private int findPath(TreeNode root, int sum) {
+    //     if (root == null) return 0;
+    //     sum -= root.val;
+    //     return ((sum == 0) ? 1 : 0) + 
+    //         findPath(root.left, sum) + findPath(root.right, sum);
+    // }
+}
+//runtime:29 ms
+//memory:38.5 MB

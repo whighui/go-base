@@ -47,6 +47,28 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/lc/leetcode/editor/cn/[112]路径总和.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/lc/leetcode/editor/cn/doc/content/[112]路径总和.md" />
+              <option name="frontendQuestionId" value="leetcode.cn112" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[112]路径总和.go" />
+              <option name="titleSlug" value="path-sum" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/lc/leetcode/editor/cn/[113]路径总和 II.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/lc/leetcode/editor/cn/doc/content/[113]路径总和 II.md" />
+              <option name="frontendQuestionId" value="leetcode.cn113" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[113]路径总和 II.go" />
+              <option name="titleSlug" value="path-sum-ii" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/lc/leetcode/editor/cn/[11]盛最多水的容器.go">
           <value>
             <LeetcodeEditor>
@@ -484,6 +506,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[42]接雨水.go" />
               <option name="titleSlug" value="trapping-rain-water" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/lc/leetcode/editor/cn/[437]路径总和 III.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/lc/leetcode/editor/cn/doc/content/[437]路径总和 III.md" />
+              <option name="frontendQuestionId" value="leetcode.cn437" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[437]路径总和 III.go" />
+              <option name="titleSlug" value="path-sum-iii" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -1177,6 +1210,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[9]回文数.go" />
               <option name="titleSlug" value="palindrome-number" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/lc/leetcode/editor/cn/[LCR 050]路径总和 III.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/lc/leetcode/editor/cn/doc/content/[LCR 050]路径总和 III.md" />
+              <option name="frontendQuestionId" value="leetcode.cnLCR 050" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/lc/leetcode/editor/cn/[LCR 050]路径总和 III.go" />
+              <option name="titleSlug" value="6eUYwP" />
             </LeetcodeEditor>
           </value>
         </entry>
