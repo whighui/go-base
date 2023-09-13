@@ -1,0 +1,92 @@
+class LRUCache {
+
+    private HashMap<Integer, DoubleList> hashMap;
+    private int capacity;
+    private DoubleList head;
+    private DoubleList tail;
+
+    public LRUCache(int capacity) {
+        this.capacity = capacity;
+        hashMap = new HashMap<>(capacity);
+        head = new DoubleList(0, 0);
+        tail = new DoubleList(0, 0);
+        head.next = tail;
+        tail.prev = head;
+    }
+
+    //获取元素的时候也需要删除当前节点 并采用尾插法呗 在这里哈呢
+    public int get(int key) {
+        if (hashMap.containsKey(key)) {
+            DoubleList list = hashMap.get(key);
+            int val = list.value;
+            removeNode(list);
+            addTail(list);
+            return val;
+        }
+        return -1;
+    }
+
+    private void removeNode(DoubleList list) {
+        DoubleList node = list.prev;
+        DoubleList node1 = list.next;
+        node.next = node1;
+        node1.prev = node;
+    }
+
+    //采用尾插 如果存在K 先插入
+    public void put(int key, int value) {
+        if (hashMap.containsKey(key)) {
+            DoubleList list = hashMap.get(key);
+            list.value = value;
+            hashMap.remove(key);
+            hashMap.put(key, list);
+            removeNode(list);
+            addTail(list);
+        } else {
+            if (hashMap.size() == capacity) {
+                //容量满了 删除hash 和头节点
+                DoubleList list = head.next;
+                removeHead();                   //这两行代码就是搞反向了就是不可以呗在这里哈
+                hashMap.remove(list.key);
+            }
+            DoubleList list = new DoubleList(key, value);
+            addTail(list);
+            hashMap.put(key, list);
+        }
+    }
+
+    private void removeHead() {
+        DoubleList temp = head.next.next;
+        head.next = temp;
+        temp.prev = head;
+    }
+
+    private void addTail(DoubleList list) {
+        DoubleList node = tail.prev;
+        node.next = list;
+        list.prev = node;
+        list.next = tail;
+        tail.prev = list;
+    }
+
+    private class DoubleList {
+        private int key;
+        private int value;
+        DoubleList prev;
+        DoubleList next;
+
+        public DoubleList(int key, int value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
+}
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache obj = new LRUCache(capacity);
+ * int param_1 = obj.get(key);
+ * obj.put(key,value);
+ */
+//runtime:20 ms
+//memory:46.4 MB

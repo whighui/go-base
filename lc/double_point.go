@@ -1,6 +1,8 @@
 package lc
 
-import "math"
+import (
+	"math"
+)
 
 /**
 主要是实现双指针部分 双指针思想被
@@ -82,4 +84,34 @@ func minLength(nums []int) int {
 		return 0
 	}
 	return minLen
+}
+
+// lc-581 思路比较重要
+func findUnsortedSubarray(nums []int) int {
+	//重左到右 找到破坏递增序的最后一个 【3,5,6,8,2,10】 那么就是位置2
+	//重右到左 找到破坏递减序的最后一个 【8,10,12,9,15】 那么就是位置10 最后破坏了递减序
+	if len(nums) <= 1 {
+		return 0
+	}
+
+	midRight, midLeft := -1, -1
+	lrMax, rlMin := math.MinInt, math.MaxInt //
+	for i := 0; i < len(nums); i++ {
+		if nums[i] > lrMax {
+			lrMax = nums[i]
+		} else {
+			midRight = i //破坏递增位置了 最后找到2
+		}
+		rightIndex := len(nums) - 1 - i
+		if nums[rightIndex] < rlMin {
+			rlMin = nums[rightIndex]
+		} else {
+			midLeft = rightIndex
+		}
+	}
+
+	if midLeft >= midRight {
+		return 0
+	}
+	return midRight - midLeft + 1
 }

@@ -1,0 +1,35 @@
+class Solution {
+    public int subarraySum(int[] nums, int k) {
+        // //和为K的子数组 这里就是该咋办呢对吧哈  和为K子数组呗在这里哈呢 
+        // //这里边就是枚举一下呗 先在这里哈呢 枚举一下子
+        // if(nums==null) return 0;
+        // int sum=0;
+        // int res=0; 
+        // for(int i=0; i<nums.length; i++){
+        //     for(int j=i; j<nums.length; j++){
+        //         sum=sum+nums[j];
+        //         if(k==sum){
+        //             res++;   //这里就是不break就好了呗 在这里哈呢 
+        //         }
+        //     }
+        //     sum=0;
+        // }
+        // return res;
+
+        //上述就是在一个数组里边操作呗就是在这里哈呢  时间复杂度就是O(n^2)呗 在这里哈呢
+        //为了降低时间复杂度 这里增加空间复杂度 以时间换空间的做法呗 在这里哈呢
+        Map<Integer,Integer> hashMap=new HashMap<>();
+        hashMap.put(0,1);                 //这里就是为什么呢 
+        int sum=0 ,res=0;
+        for(int i=0; i<nums.length; i++){
+            sum=sum+nums[i];
+            if(hashMap.containsKey(sum-k)){
+                res=res+hashMap.get(sum-k);
+            }
+            hashMap.put(sum,hashMap.getOrDefault(sum,0)+1);
+        }
+        return res;
+    }
+}
+//runtime:26 ms
+//memory:41 MB

@@ -19,6 +19,25 @@ func TestRemoveKdigits(t *testing.T) {
 	fmt.Println(removeKdigits("12532", 2))
 }
 
+// [[2],[2],[2,6],[1],[1,5],[1,2],[1],[2]]
+func TestLru(t *testing.T) {
+	lRUCache := Constructor(2)
+	lRUCache.Get(2)    //-1
+	lRUCache.Put(2, 6) //null
+	lRUCache.Get(1)    //-1
+	lRUCache.Put(1, 5) //null
+	lRUCache.Put(1, 2) //null
+	lRUCache.Get(1)    //2
+	lRUCache.Get(2)    //6
+	//[null,-1,null,-1,null,null,2,6]
+
+}
+
+func TestFindUnsortedSubarray(t *testing.T) {
+	nums := []int{1, 3, 2, 2, 2}
+	fmt.Println(findUnsortedSubarray(nums))
+}
+
 func TestMaxSubArray1(t *testing.T) {
 	nums := []int{-1, -2, -3, 4}
 	fmt.Println(maxSubArray(nums))
@@ -29,7 +48,7 @@ func TestLengthOfLIS(t *testing.T) {
 	fmt.Println(maxLength)
 }
 
-//最长递增子序列的个数
+// 最长递增子序列的个数
 func TestLengthOfLISCount(t *testing.T) {
 	maxLengthCount := lengthOfLISCount([]int{1, 1, 1, 1})
 

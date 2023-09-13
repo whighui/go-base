@@ -122,3 +122,21 @@ func pathSum(root *TreeNode, targetSum int) [][]int {
 	dfs(root, list, targetSum)
 	return result
 }
+
+// 合并二叉树
+func mergeTrees(root1 *TreeNode, root2 *TreeNode) *TreeNode {
+	if root1 == nil && root2 == nil {
+		return nil
+	}
+	var val1, val2 int
+	if root1 != nil {
+		val1 = root1.Val
+	}
+	if root2 != nil {
+		val2 = root2.Val
+	}
+	root := &TreeNode{Val: val1 + val2}
+	root.Left = mergeTrees(root1.Left, root2.Left)
+	root.Right = mergeTrees(root1.Right, root2.Right)
+	return root
+}
