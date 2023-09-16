@@ -50,3 +50,5 @@ func dailyTemperatures(temperatures []int) []int {
 	}
 	return result
 }
+
+//判断是否是合法字符串
