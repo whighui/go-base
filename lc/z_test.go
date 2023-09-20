@@ -54,3 +54,22 @@ func TestLengthOfLISCount(t *testing.T) {
 
 	fmt.Println(maxLengthCount)
 }
+
+func TestQueue(t *testing.T) {
+	queue := make([]*TreeNode, 0)
+	queue = append(queue, &TreeNode{Val: 1}, nil)
+	fmt.Println(len(queue))
+	fmt.Println(queue)
+}
+
+func TestIsSymmetric(t *testing.T) {
+	root := &TreeNode{2, &TreeNode{
+		Val:   3,
+		Right: &TreeNode{Val: 4},
+	}, &TreeNode{
+		Val:  3,
+		Left: &TreeNode{Val: 4},
+	}}
+
+	fmt.Println(isSymmetric(root))
+}

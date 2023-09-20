@@ -12,7 +12,6 @@ type TreeNode struct {
           后续：左右根
           已知前序和中序可以确定一颗二叉树
 		  已知中序和后序可以确定一颗二叉树
-
 */
 
 // lc-144 二叉树前序遍历 递归完成
@@ -87,12 +86,6 @@ func inorderTraversalLoop(root *TreeNode) []int {
 	return result
 }
 
-// lc-100 想同的树
-func isSameTree(p *TreeNode, q *TreeNode) bool {
-
-	return false
-}
-
 // lc-113  路径总和II
 func pathSum(root *TreeNode, targetSum int) [][]int {
 	if root == nil {
@@ -139,4 +132,35 @@ func mergeTrees(root1 *TreeNode, root2 *TreeNode) *TreeNode {
 	root.Left = mergeTrees(root1.Left, root2.Left)
 	root.Right = mergeTrees(root1.Right, root2.Right)
 	return root
+}
+
+// lc-100 想同的树
+func isSameTree(p *TreeNode, q *TreeNode) bool {
+
+	return false
+}
+
+// -----------------------------------------------------------------------二叉树层序遍历
+func isSymmetric(root *TreeNode) bool {
+	if root == nil {
+		return true
+	}
+	queue := make([]*TreeNode, 0)
+	queue = append(queue, root.Left, root.Right)
+	for len(queue) > 0 {
+		size := len(queue)
+		for i := 0; i < size/2; i++ {
+			leftNode, rightNode := queue[i], queue[size-1-i]
+			if leftNode == nil && rightNode == nil {
+				continue
+			}
+			if leftNode == nil || rightNode == nil || leftNode.Val != rightNode.Val {
+				return false
+			}
+			queue = append(queue, leftNode.Left, leftNode.Right, rightNode.Left, rightNode.Right)
+		}
+		queue = queue[size:]
+		size = len(queue)
+	}
+	return true
 }
