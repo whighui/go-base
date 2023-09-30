@@ -1,105 +1,40 @@
+// main.go
 package main
 
-import (
-	"fmt"
-	"math"
-)
+var nodeLinkInfo map[int32][]int32  //key代表点 value代表边数组
+var linkNodeInfo map[int32][2]int32 //key代表边，value[0]是边的起点ID value[1]是边的终点ID
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
+type Node struct {
+	nodeId int32   //nodeID代表地图中的一个节点
+	linkId int32   //linkID代表某个节点上的一条边
+	next   []*Node //上述点和边组成的路段的临近路况信息
 }
 
-func main() {
-	fmt.Println(reverse(-123))
-}
-func reverse(x int) int {
-	var res int64
-	for x != 0 {
-		tail := x % 10
-		res = res*10 + int64(tail)
-		x = x / 10
+// 这个是代表司机就是正在这个  A--司机---B 司机在当前边上和起点A 想要展示地图1000范围内的全貌
+// 假如传进来的root节点是已知rootID和linkID
+func generate(root *Node) *Node {
+	if root == nil || root.nodeId == 0 {
+		return nil
 	}
-	if res > math.MaxInt32 {
-		return 0
+	root.next = make([]*Node, 0)
+	linkList := nodeLinkInfo[root.nodeId]
+	if len(linkList) == 0 {
+		return nil
 	}
-	if res < math.MinInt32 {
-		return 0
-	}
-	return int(res)
-}
-
-// 最长回文子串呗 这种使用中心扩散法呗是最好的呗
-func longestPalindrome(s string) string {
-
-	res := ""
-	for i := 0; i < len(s); i++ {
-		res = maxPalindrome(i, i, s, res)
-		res = maxPalindrome(i, i+1, s, res)
-	}
-	return res
-}
-
-// 判断局部是否成对呗  在这里直接返回字符创就是最好的办法呗
-func maxPalindrome(i, j int, s, res string) string {
-	sub := ""
-	for i >= 0 && j < len(s) && s[i] == s[j] {
-		sub = s[i : j+1]
-		i--
-		j++
-	}
-	if len(sub) > len(res) {
-		res = sub
-	}
-	return res
-}
-
-//链表进行排序呗  时间复杂度要求O(NlogN) 在这里就是主要意思是啥呢 要求比较快的排序算法呗 归并排序啥的
-func sortList(head *ListNode) *ListNode {
-	if head == nil {
-		return head
-	}
-	return spiltList(head)
-}
-
-//先进行分裂链表呗
-func spiltList(head *ListNode) *ListNode {
-	if head == nil || head.Next == nil {
-		return head
-	}
-	//寻找中间节点进行分裂呗
-	slow, fast := head, head
-	for fast != nil && fast.Next != nil { //寻找到偶数前边一个节点
-		slow = slow.Next
-		fast = fast.Next.Next
-	}
-	spiltList(slow)
-	slow.Next = nil
-	spiltList(head)
-	return mergeList(head, slow)
-}
-
-//merge进行链表排序
-func mergeList(l1, l2 *ListNode) *ListNode {
-	result := &ListNode{}
-	res := result
-
-	for l1 != nil || l2 != nil {
-		val1, val2 := math.MinInt32, math.MinInt32
-		if l1 != nil {
-			val1 = l1.Val
+	for _, linkID := range linkList {
+		nodeArray := linkNodeInfo[linkID]
+		if nodeArray[1] == 0 { //也即就是这条边就是没有终点的呗
+			return nil
 		}
-		if l2 != nil {
-			val2 = l2.Val
+		for _, nodeID := range nodeArray {
+			node := &Node{
+				nodeId: nodeID,
+				linkId: linkID,
+			}
+			root.next = append(root.next, node)
+
+			generate(node) //这里边面试官告诉我先
 		}
-		if val1 <= val2 {
-			l1 = l1.Next
-			res.Next = l1
-		} else {
-			l2 = l2.Next
-			res.Next = l2
-		}
-		res = res.Next
 	}
-	return result.Next
+	return root
 }

@@ -249,5 +249,246 @@ redis
 反问
 1. 技术leader当组长 而不是管理型leader当组长
 2. 项目变换频繁吗 或者OKR制定中途是否更改呢 
-  个人感觉 迅雷面试官给人感觉不错 整体上引导面试者来说
+    个人感觉 迅雷面试官给人感觉不错 整体上引导面试者来说
+
+#  23年9月27号 百度地图 一面与二面
+
+## 一面 
+
+**八股+设计**
+
+1. 64位操作系统字长为啥是8字节 32位操作系统是几字节
+
+2. golang slice 讲一下 OMAKE->OSLICE->runtime.makeslice结构体形式->扩容规则
+
+   1. 扩容规则
+   2. 讲扩容之后申请内存需要进行内存对齐（被面试官问住 操作系统为啥内存对齐，64位为啥是8字节）
+
+3. linux 进程内存大概长什么样子->栈、堆、数据段、代码段。我说golang中堆可以分配2^48范围的堆内存。面试官问我为什么是48  **还是不会** 我说好像跟地址总线相关 但是不知道具体怎么来的
+
+4. 查看CPU以及内存负载使用什么命令 top
+
+   1. 在问top有什么具体参数吗？不知道转移话题 mac电脑top一下都出来进程、内存、CPU负载等信息
+   2. 面试官说Linux下做过吗，莫有
+
+5. 服务中限流如何做的？
+
+   1. 分为分布式限流和本地限流 限流是限流自己的服务 而不是接入的外部服务，面试官比较诡异
+
+   2. 本地令牌桶算法有什么缺点吗？没答上来好尴尬
+
+   3. 问知道其他限流器吗？滑动窗口、计数器等限流，讲述了一下上述限流器的缺点。
+
+   4. 分布式限流项目中如何做的，redis incr计数器 滑动窗口形式来做
+
+   5. 本地令牌桶如何做的呢？使用开源的google_limit
+
+   6. 有自己实现过吗？手写一个本地令牌桶算法
+
+      ```go
+      
+      // 百度一面面试官被闻到过单机限流令牌桶如何实现
+      type Bucket struct {
+      	maxLimit int32
+      	token    int32
+      	psm      string
+      	lock     *sync.Mutex 
+      }
+      
+      func (b *Bucket) allow(psm string) bool {
+      	b.lock.Lock()
+      	defer b.lock.Unlock() //这么做就是好像有点简单呗
+      	if b.token > 0 {
+      		b.token--
+      		return true
+      	}
+      	return false
+      }
+      
+      func (b *Bucket) timer() {
+      	tick := time.Tick(1 * time.Second)
+      
+      	for {
+      		select {
+      		case <-tick:
+      			//重新将令牌桶初始化为最大值
+      			b.lock.Lock()
+      			defer b.lock.Unlock()
+      			b.token = b.maxLimit
+      		default:
+      		}
+      	}
+      }
+      
+      
+      ```
+
+   7. 面试官追加必须要进行上锁吗使用Mutex这种关键字 我说可以使用atomic.SwapAndCompareAddInt32这个方法 让token值进行+1
+
+   8. 你上述这个场景应该是针对method方法的，假如要是不同用户有不同的限流，假如A用户限流20，但是B用户是付费用户，那么限流就是60。这种场景下的限流又是要该如何实现呢，根据面试官提供的场景改成`map[int][int` 结构体来进行不同用户限流的划分。
+
+      ```go
+      
+      // 百度一面面试官被闻到过单机限流令牌桶如何实现
+      type Bucket struct {
+      	maxLimit int32
+      	token    int32
+      	maxLimit map[int][int]  //这里边根据上述场景改成map形式
+      	lock     *sync.Mutex 
+      }
+      
+      func (b *Bucket) allow(psm string) bool {
+      	b.lock.Lock()
+      	defer b.lock.Unlock() //这么做就是好像有点简单呗
+      	if b.token > 0 {
+      		b.token--
+      		return true
+      	}
+      	return false
+      }
+      
+      func (b *Bucket) timer() {
+      	tick := time.Tick(1 * time.Second)
+      
+      	for {
+      		select {
+      		case <-tick:
+      			//重新将令牌桶初始化为最大值
+      			b.lock.Lock()
+      			defer b.lock.Unlock()
+      			b.token = b.maxLimit
+      		default:
+      		}
+      	}
+      }
+      
+      
+      
+      
+      ```
+
+   9. 上述场景被问到是否可以进行优化，我说可以根据user_id来进行划分，将map分成多个map，在timer中分成多个timer来进行令牌token的续放。
+
+6. 分布式令牌桶限流设计一个，是利用redis key value=hash来应对上述场景，但是好像造成大Key问题。最后说不会
+7. 我说是否可以使用zset跳表这种形式来做，面试官问我跳表是什么，画了一下示意图
+8. B树是什么（这块紧张了，关键不知道根节点下 可以固定多少个孩子，怎么确定树的高度）导致总体B树没有讲好。
+
+多次引导面试官来问Go语言，面试官就是不问，很难受。面试官主要是C++语言，面试官说我问你C++你也不会呀。
+
+**延伸**
+
+1. 做过相关性能测试吗 
+   1. 我说现在项目就是在重构当中，讲了一下提升的性能点。面试官说不是，抛开项目来讲是否做过其他性能测试。例如在48G机器上，长连接websocket 能支持多大QPS
+   2. 我说没有做过，但是我知道go语言上性能优化的提升，每个版本做了哪些性能优化。哎 面试官还是不问Go 崩溃。
+2. 项目现在主要几个人在做 我说两个人。
+3. 最后终于来了一个Go方面知识 让我讲一讲slice  一顿输出 到 CPU内存对齐 为啥字长是8字节
+
+
+
+## 二面 
+
+先自我介绍一下
+
+项目：
+
+1. 问我解析流量多大QPS 我说在80万左右
+2. 服务怎么抗住这么大的QPS的呢？我说本地缓存+中心化缓存。本地缓存存储idl信息
+3. 面试官问：本地缓存是每个机器上都存储一份吗，针对不同Psm 我说是的
+4. 面试官说：这样子很浪费内存空间啊，我说是，目前在进行优化使用中心化redis缓存来解决。
+5. 面试追问：假如就是用本地缓存来解决这个问题如何进行解决呢。给个场景就是不同用户代表psm，尽量避免地域请求
+   1. 我说我们目前是1000台左右的实例，如何按照现在方式的话，就是每个实例上存储不同范围的psm缓存信息，可以理解为user_id来进行划分1000台实例上。
+   2. 面试官追问：但是这样做跟你目前的系统有什么差异？我说应该加一个Proxy代理层来实现，代理层决定那个user_id经过hash去访问那个实例信息。
+   3. 面试过：说可以的，但是你引入了一个代理层又会带来什么影响？我说网络延迟以及个实例内部可能访问不均衡。
+   4. 面试官追问：那么如何解决每个实例访问不均衡呢？我说分布式一致性hash算法 crc32这种，可以避免访问布局
+   5. 面试官又追问：即便分布式hash也会导致分配不均，又如何处理呢？我说那就重代理层来决定，假如多长时间访问一个实例进行计数，如果超过一定阈值，请求别的实例。
+   6. 面试官追问：还有别的解决方案了嘛？我说暂时想不到 
+   7. 面试官追问：了解mysql 分片原理吗，直到Msyql是如何进行分片的呢？我说不了解
+      1. 依稀记得mysql分片 好像也是利用一致性hash来做的呢。
+
+算法：
+
+问我刷题了，我说刷了一点。面试官说那咱们不按照lc来刷题，按照一个场景吧，比如地图
+
+```go
+			|
+.—————.—————. 
+      |
+```
+
+点定义：node-->表存 node_id [link1,link2,link3...]  link代表边 
+
+边定义   link---->表存 link_id start_node_id end_node_id。
+
+上述信息都是存储在表里边，问我，将这些点、边都加载到内存中应该使用什么数据结构。我说查询场景是什么，面试官说可能存在点、边 需要展示当前节点的周围路段信息。
+
+--------------------
+
+思考了一分钟：我说使用二维数组来存储
+
+```go
+node1   node2   node3   node4   node5
+link1   link4   ..      ..      ..
+link2   link5   ..      ..
+link3
+```
+
+但是这种方案就是被面试官否决了，因为什么呢？主要根据点来查到边，边里有点，关键点边里边的点如何在方面查询。
+
+面试官想要O(n)或者O(logn)来快速查询。这种思路下就是没有想出来比较更好的。
+
+面试官直接给出数据结构形式，一个node节点+边代表一个路况节点，其实以一个节点来延伸展示出来的就是一个数状结构。
+
+```go
+type Node struct{
+  node_id int
+  link_id int
+  next []*Node
+}
+```
+
+将表里边信息全部装在到内存中  面试官不要让我去向递归退出条件什么的 
+
+```go
+
+var nodeLinkInfo map[int32][]int32  //key代表点 value代表边数组
+var linkNodeInfo map[int32][2]int32 //key代表边，value[0]是边的起点ID value[1]是边的终点ID
+
+type Node struct {
+	nodeId int32   //nodeID代表地图中的一个节点
+	linkId int32   //linkID代表某个节点上的一条边
+	next   []*Node //上述点和边组成的路段的临近路况信息
+}
+
+// 这个是代表司机就是正在这个  A--司机---B 司机在当前边上和起点A 想要展示地图1000范围内的全貌
+// 假如传进来的root节点是已知rootID和linkID
+func generate(root *Node) *Node {
+	if root == nil || root.nodeId == 0 {
+		return nil
+	}
+	root.next = make([]*Node, 0)
+	linkList := nodeLinkInfo[root.nodeId]
+	if len(linkList) == 0 {
+		return nil
+	}
+	for _, linkID := range linkList {
+		nodeArray := linkNodeInfo[linkID]
+		if nodeArray[1] == 0 { //也即就是这条边就是没有终点的呗
+			return nil
+		}
+		for _, nodeID := range nodeArray {
+			node := &Node{
+				nodeId: nodeID,
+				linkId: linkID,
+			}
+			root.next = append(root.next, node)
+
+			generate(node) //这里边面试官告诉我先
+		}
+	}
+	return root
+}
+
+```
+
+
 
