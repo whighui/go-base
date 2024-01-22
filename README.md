@@ -240,3 +240,10 @@ docker pull mysql/mysql-server  拉去最新mysql-server适配mac m1版本
 1. 启动redis: docker run -p 6379:6379 --name redis -v /Users/bytedance/Desktop/whig/data/redis/data:/data -v /Users/bytedance/Desktop/whig/data/redis/redis.conf:/etc/redis/redis.conf -d redis redis-server /etc/redis/redis.conf
 2. 参考博客 https://blog.csdn.net/u013868195/article/details/119778589
 
+
+# 直播数字人
+1. 直播间 推流拉流 
+2. 虚拟人
+3. tts
+4. 弹幕、评论、场控  内容安全
+5. 前端
